@@ -20,9 +20,9 @@ export class LocationComponent implements OnInit {
       localStorage.setItem('data',latlon);
     }  
     this.location();
-    setTimeout(()=>{
-      this.ngOnInit();
-    },5000);
+    // setTimeout(()=>{
+    //   this.ngOnInit();
+    // },5000);
   }
 
   location(){
@@ -35,12 +35,13 @@ export class LocationComponent implements OnInit {
     let x = (<HTMLInputElement>(document.getElementById('search'))).value
     console.log(x);
     
-    const headers = new HttpHeaders({
-          'Content-Type': 'Application/json',     
-    })  
+    // const headers = new HttpHeaders({
+    //       'Content-Type': 'Application/json',     
+    // })  
     
-    return this.http.get('https://us1.locationiq.com/v1/search.php?key=3199bc66a77470&q='+x+'&format=json', {headers:headers}).subscribe((suc) => {
+    return this.http.get('https://us1.locationiq.com/v1/search.php?key=3199bc66a77470&q='+x+'&format=json').subscribe((suc) => {
         this.res=suc;
+        this.res=this.res[0];
         console.log(this.res);
         const data = this.res.lat + ',' + this.res.lon;
         console.log(data);
