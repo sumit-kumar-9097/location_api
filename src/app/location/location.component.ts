@@ -27,7 +27,7 @@ export class LocationComponent implements OnInit {
 
   location(){
     const url = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyDm9MO7inWEy-_k6hgApQgCToE1D-AldfY&q='+localStorage.getItem('data') ;
-    console.log(url);
+    // console.log(url);
     return url;
   }
 
@@ -43,6 +43,7 @@ export class LocationComponent implements OnInit {
         this.res=suc;
         console.log(this.res);
         const data = this.res.lat + ',' + this.res.lon;
+        console.log(data);
         localStorage.setItem('data',data);
         this.location();
 
